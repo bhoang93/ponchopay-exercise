@@ -11,8 +11,12 @@ export class PaymentsController {
   constructor(private readonly paymentsService: PaymentsService) {}
 
   @Get()
-  getAllPayments(@Query() query: GetAllPaymentsQuery): Payment[] {
-    return this.paymentsService.findAll(query?.status);
+  getAllPayments(@Query() query: GetAllPaymentsQuery) {
+    const payments = this.paymentsService.findAll(query?.status);
+
+    return {
+      payments,
+    };
   }
 
   @Get('total')

@@ -26,7 +26,11 @@ describe('PaymentsController', () => {
       .spyOn(paymentsService, 'findAll')
       .mockImplementation(() => allPayments);
 
-    expect(paymentsController.getAllPayments({})).toStrictEqual(allPayments);
+    const expected = {
+      payments: allPayments,
+    };
+
+    expect(paymentsController.getAllPayments({})).toStrictEqual(expected);
   });
 
   it('should return all payments of the specified status', () => {
@@ -46,9 +50,11 @@ describe('PaymentsController', () => {
       .spyOn(paymentsService, 'findAll')
       .mockImplementation(() => filteredPayments);
 
-    expect(paymentsController.getAllPayments(query)).toStrictEqual(
-      filteredPayments,
-    );
+    const expected = {
+      payments: filteredPayments,
+    };
+
+    expect(paymentsController.getAllPayments(query)).toStrictEqual(expected);
 
     expect(findAll).toBeCalledWith(query.status);
   });
