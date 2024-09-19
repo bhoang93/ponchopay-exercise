@@ -14,4 +14,8 @@ export class PaymentsController {
   getAllPayments(@Query() query: GetAllPaymentsQuery): Payment[] {
     return this.paymentsService.findAll(query?.status);
   }
+
+  getTotalForCompletedPayments() {
+    return this.paymentsService.getCompletedPaymentsTotal();
+  }
 }

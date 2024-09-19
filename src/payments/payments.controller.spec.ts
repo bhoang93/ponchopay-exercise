@@ -52,4 +52,14 @@ describe('PaymentsController', () => {
 
     expect(findAll).toBeCalledWith(query.status);
   });
+
+  it('should return total for completed payments', () => {
+    const total = 100;
+
+    const findAll = jest
+      .spyOn(paymentsService, 'getCompletedPaymentsTotal')
+      .mockReturnValue(total);
+
+    expect(paymentsController.getTotalForCompletedPayments()).toEqual(total);
+  });
 });

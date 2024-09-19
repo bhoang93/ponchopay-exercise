@@ -80,7 +80,7 @@ describe('PaymentsService', () => {
     service.addPayment(completePayment1);
     service.addPayment(completePayment2);
 
-    expect(service.getCompletedPaymentTotal()).toEqual(
+    expect(service.getCompletedPaymentsTotal()).toEqual(
       completePayment1.amount + completePayment2.amount,
     );
   });
