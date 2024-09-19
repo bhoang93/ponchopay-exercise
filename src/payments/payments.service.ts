@@ -1,5 +1,5 @@
 ﻿import { Injectable } from '@nestjs/common';
-import { Payment } from '../interfaces/payment.interface';
+import { Payment, PaymentStatus } from '../interfaces/payment.interface';
 
 @Injectable()
 export class PaymentsService {
@@ -9,7 +9,9 @@ export class PaymentsService {
     this.payments.push(payment);
   }
 
-  findAll(): Payment[] {
-    return this.payments;
+  findAll(status?: PaymentStatus): Payment[] {
+    return status
+      ? this.payments.filter((payment) => payment.status === status)
+      : this.payments;
   }
 }

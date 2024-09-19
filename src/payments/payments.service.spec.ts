@@ -27,4 +27,27 @@ describe('PaymentsService', () => {
 
     expect(service.findAll()).toEqual([newPayment]);
   });
+
+  it('retrieves payments of the specified status', () => {
+    const initialisedPayment: Payment = {
+      amount: 100,
+      status: 'initialised',
+      product: testProduct,
+      paymentMethod: testPaymentMethod,
+      user: testUser,
+    };
+
+    const completePayment: Payment = {
+      amount: 100,
+      status: 'complete',
+      product: testProduct,
+      paymentMethod: testPaymentMethod,
+      user: testUser,
+    };
+
+    service.addPayment(initialisedPayment);
+    service.addPayment(completePayment);
+
+    expect(service.findAll('complete')).toEqual([completePayment]);
+  });
 });

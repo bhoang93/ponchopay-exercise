@@ -2,7 +2,11 @@
 import { PaymentMethod } from './paymentMethod.interface';
 import { User } from './user.interface';
 
-type PaymentStatus = 'initialised' | 'user set' | 'payment taken' | 'complete';
+export type PaymentStatus =
+  | 'initialised'
+  | 'user set'
+  | 'payment taken'
+  | 'complete';
 
 export interface Payment {
   amount: number;
