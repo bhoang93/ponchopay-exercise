@@ -38,17 +38,6 @@ describe('PaymentsController', () => {
       user: testUser,
     };
 
-    const allPayments = [
-      {
-        amount: 100,
-        status: 'initialised' as const,
-        product: testProduct,
-        paymentMethod: testPaymentMethod,
-        user: testUser,
-      },
-      completePayment,
-    ];
-
     const filteredPayments = [completePayment];
 
     const query: GetAllPaymentsQuery = { status: 'complete' as const };
