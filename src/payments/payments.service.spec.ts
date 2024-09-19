@@ -1,23 +1,7 @@
 ﻿import { Test, TestingModule } from '@nestjs/testing';
 import { Payment } from '../interfaces/payment.interface';
 import { PaymentsService } from './payments.service';
-
-const testUser = {
-  name: 'Bobby tables',
-  email: 'bobby@tables.com',
-};
-
-const testPaymentMethod = {
-  user: testUser,
-  cardNumber: 555,
-};
-
-const testProduct = {
-  name: 'new product',
-  description: 'test',
-  price: 11.99,
-  stockLevel: 0,
-};
+import { testPaymentMethod, testProduct, testUser } from '../shared/testModels';
 
 describe('PaymentsService', () => {
   let service: PaymentsService;
