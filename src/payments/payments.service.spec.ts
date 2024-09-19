@@ -16,6 +16,7 @@ describe('PaymentsService', () => {
 
   it('adds and retrieves payments to the store', () => {
     const newPayment: Payment = {
+      id: 1,
       amount: 100,
       status: 'initialised',
       product: testProduct,
@@ -30,6 +31,7 @@ describe('PaymentsService', () => {
 
   it('retrieves payments of the specified status', () => {
     const initialisedPayment: Payment = {
+      id: 1,
       amount: 100,
       status: 'initialised',
       product: testProduct,
@@ -38,6 +40,7 @@ describe('PaymentsService', () => {
     };
 
     const completePayment: Payment = {
+      id: 2,
       amount: 100,
       status: 'complete',
       product: testProduct,
@@ -53,6 +56,7 @@ describe('PaymentsService', () => {
 
   it('gets total for completed payments', () => {
     const initialisedPayment: Payment = {
+      id: 1,
       amount: 100,
       status: 'initialised',
       product: testProduct,
@@ -61,6 +65,7 @@ describe('PaymentsService', () => {
     };
 
     const completePayment1: Payment = {
+      id: 2,
       amount: 50,
       status: 'complete',
       product: testProduct,
@@ -69,6 +74,7 @@ describe('PaymentsService', () => {
     };
 
     const completePayment2: Payment = {
+      id: 3,
       amount: 200,
       status: 'complete',
       product: testProduct,
@@ -83,5 +89,25 @@ describe('PaymentsService', () => {
     expect(service.getCompletedPaymentsTotal()).toEqual(
       completePayment1.amount + completePayment2.amount,
     );
+  });
+
+  it('updates the status of a payment', () => {
+    const payment: Payment = {
+      id: 1,
+      amount: 100,
+      status: 'initialised',
+      product: testProduct,
+      paymentMethod: testPaymentMethod,
+      user: testUser,
+    };
+    service.addPayment(payment);
+
+    const newStatus = 'user-set';
+
+    service.updatePaymentStatus(payment.id, newStatus);
+
+    const result = service.findAll()[0];
+
+    expect(result.status).toBe(newStatus);
   });
 });

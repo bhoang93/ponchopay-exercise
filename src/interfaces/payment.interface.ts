@@ -9,6 +9,7 @@ export type PaymentStatus =
   | 'complete';
 
 export interface Payment {
+  id: number;
   amount: number;
   status: PaymentStatus;
   product: Product;

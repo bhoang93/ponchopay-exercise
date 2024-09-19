@@ -15,6 +15,7 @@ describe('PaymentsController', () => {
     it('should return all payments', () => {
       const allPayments = [
         {
+          id: 1,
           amount: 100,
           status: 'initialised' as const,
           product: testProduct,
@@ -36,6 +37,7 @@ describe('PaymentsController', () => {
 
     it('should return all payments of the specified status', () => {
       const completePayment = {
+        id: 1,
         amount: 100,
         status: 'complete' as const,
         product: testProduct,

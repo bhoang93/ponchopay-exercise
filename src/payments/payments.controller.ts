@@ -1,6 +1,6 @@
 ﻿import { Controller, Get, Query } from '@nestjs/common';
 import { PaymentsService } from './payments.service';
-import { Payment, PaymentStatus } from '../interfaces/payment.interface';
+import { PaymentStatus } from '../interfaces/payment.interface';
 
 export class GetAllPaymentsQuery {
   status?: PaymentStatus;

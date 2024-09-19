@@ -20,4 +20,9 @@ export class PaymentsService {
       return payment.status === 'complete' ? total + payment.amount : total;
     }, 0);
   }
+
+  updatePaymentStatus(id: number, newStatus: PaymentStatus) {
+    const index = this.payments.findIndex((payment) => payment.id === id);
+    this.payments[index] = { ...this.payments[index], status: newStatus };
+  }
 }
