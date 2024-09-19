@@ -50,4 +50,38 @@ describe('PaymentsService', () => {
 
     expect(service.findAll('complete')).toEqual([completePayment]);
   });
+
+  it('gets total for completed payments', () => {
+    const initialisedPayment: Payment = {
+      amount: 100,
+      status: 'initialised',
+      product: testProduct,
+      paymentMethod: testPaymentMethod,
+      user: testUser,
+    };
+
+    const completePayment1: Payment = {
+      amount: 50,
+      status: 'complete',
+      product: testProduct,
+      paymentMethod: testPaymentMethod,
+      user: testUser,
+    };
+
+    const completePayment2: Payment = {
+      amount: 200,
+      status: 'complete',
+      product: testProduct,
+      paymentMethod: testPaymentMethod,
+      user: testUser,
+    };
+
+    service.addPayment(initialisedPayment);
+    service.addPayment(completePayment1);
+    service.addPayment(completePayment2);
+
+    expect(service.getCompletedPaymentTotal()).toEqual(
+      completePayment1.amount + completePayment2.amount,
+    );
+  });
 });

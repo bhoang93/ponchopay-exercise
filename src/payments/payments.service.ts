@@ -14,4 +14,10 @@ export class PaymentsService {
       ? this.payments.filter((payment) => payment.status === status)
       : this.payments;
   }
+
+  getCompletedPaymentTotal() {
+    return this.payments
+      .filter((payment) => payment.status === 'complete')
+      .reduce((total, payment) => total + payment.amount, 0);
+  }
 }
