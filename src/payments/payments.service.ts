@@ -22,7 +22,9 @@ export class PaymentsService {
   }
 
   updatePaymentStatus(id: number, newStatus: PaymentStatus) {
-    const index = this.payments.findIndex((payment) => payment.id === id);
-    this.payments[index] = { ...this.payments[index], status: newStatus };
+    const payment = this.payments.find((payment) => payment.id === id);
+    if (payment) {
+      payment.status = newStatus;
+    }
   }
 }
