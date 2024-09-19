@@ -67,13 +67,31 @@ describe('PaymentsController', () => {
     it('should return total for completed payments', () => {
       const total = 100;
 
-      const findAll = jest
+      jest
         .spyOn(paymentsService, 'getCompletedPaymentsTotal')
         .mockReturnValue(total);
 
       expect(paymentsController.getTotalForCompletedPayments()).toEqual({
         total,
       });
+    });
+  });
+
+  describe('updatePaymentStatus', () => {
+    it('updates the payment status', () => {
+      const updateDto = { id: 1, status: 'complete' as const };
+
+      const updatePaymentStatus = jest.spyOn(
+        paymentsService,
+        'updatePaymentStatus',
+      );
+
+      paymentsController.updatePaymentStatus(updateDto);
+
+      expect(updatePaymentStatus).toBeCalledWith(
+        updateDto.id,
+        updateDto.status,
+      );
     });
   });
 });
