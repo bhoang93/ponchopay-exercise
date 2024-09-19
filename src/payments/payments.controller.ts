@@ -15,7 +15,12 @@ export class PaymentsController {
     return this.paymentsService.findAll(query?.status);
   }
 
+  @Get('total')
   getTotalForCompletedPayments() {
-    return this.paymentsService.getCompletedPaymentsTotal();
+    const total = this.paymentsService.getCompletedPaymentsTotal();
+
+    return {
+      total,
+    };
   }
 }

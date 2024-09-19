@@ -60,6 +60,8 @@ describe('PaymentsController', () => {
       .spyOn(paymentsService, 'getCompletedPaymentsTotal')
       .mockReturnValue(total);
 
-    expect(paymentsController.getTotalForCompletedPayments()).toEqual(total);
+    expect(paymentsController.getTotalForCompletedPayments()).toEqual({
+      total,
+    });
   });
 });
