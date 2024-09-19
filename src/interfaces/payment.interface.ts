@@ -1,0 +1,13 @@
+﻿import { Product } from './product.interface';
+import { PaymentMethod } from './paymentMethod.interface';
+import { User } from './user.interface';
+
+type PaymentStatus = 'initialised' | 'user set' | 'payment taken' | 'complete';
+
+export interface Payment {
+  amount: number;
+  status: PaymentStatus;
+  product: Product;
+  paymentMethod: PaymentMethod;
+  user: User;
+}
