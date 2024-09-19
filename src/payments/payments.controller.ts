@@ -1,4 +1,4 @@
-﻿import { Controller, Get, Put, Query } from '@nestjs/common';
+﻿import { Body, Controller, Get, Post, Put, Query } from '@nestjs/common';
 import { PaymentsService } from './payments.service';
 import { Payment, PaymentStatus } from '../interfaces/payment.interface';
 
@@ -42,7 +42,8 @@ export class PaymentsController {
     this.paymentsService.updatePaymentStatus(updateDto.id, updateDto.status);
   }
 
-  addPayment(createPaymentDto: CreatePaymentDto) {
+  @Post()
+  addPayment(@Body() createPaymentDto: CreatePaymentDto) {
     const payment: Payment = {
       ...createPaymentDto,
       status: 'initialised',
