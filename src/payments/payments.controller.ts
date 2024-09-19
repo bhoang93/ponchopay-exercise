@@ -1,4 +1,4 @@
-﻿import { Controller, Get, Post, Query } from '@nestjs/common';
+﻿import { Controller, Get, Put, Query } from '@nestjs/common';
 import { PaymentsService } from './payments.service';
 import { PaymentStatus } from '../interfaces/payment.interface';
 
@@ -30,7 +30,7 @@ export class PaymentsController {
     };
   }
 
-  @Post('update-status')
+  @Put('update-status')
   updatePaymentStatus(updateDto: UpdatePaymentStatusDto) {
     this.paymentsService.updatePaymentStatus(updateDto.id, updateDto.status);
   }
