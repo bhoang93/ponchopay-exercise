@@ -10,6 +10,27 @@ describe('PaymentsController', () => {
     paymentsController = new PaymentsController(paymentsService);
   });
 
+  describe('addPayment', () => {
+    it('creates a new payment', () => {
+      const addPayment = jest.spyOn(paymentsService, 'addPayment');
+
+      const createPaymentDto = {
+        amount: 10,
+        productId: 1,
+        userId: 1,
+        paymentMethodId: 1,
+      };
+      paymentsController.addPayment(createPaymentDto);
+
+      const expected = {
+        ...createPaymentDto,
+        status: 'initialised',
+      };
+
+      expect(addPayment).toBeCalledWith(expected);
+    });
+  });
+
   describe('getAllPayments', () => {
     it('should return all payments', () => {
       const allPayments = [

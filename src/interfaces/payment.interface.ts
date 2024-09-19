@@ -5,7 +5,7 @@
   | 'complete';
 
 export interface Payment {
-  id: number;
+  id?: number;
   amount: number;
   status: PaymentStatus;
   productId: number;

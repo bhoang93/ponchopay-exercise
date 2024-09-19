@@ -1,12 +1,19 @@
 ﻿import { Controller, Get, Put, Query } from '@nestjs/common';
 import { PaymentsService } from './payments.service';
-import { PaymentStatus } from '../interfaces/payment.interface';
+import { Payment, PaymentStatus } from '../interfaces/payment.interface';
 
 export type GetAllPaymentsQuery = {
   status?: PaymentStatus;
 };
 
 type UpdatePaymentStatusDto = { id: number; status: PaymentStatus };
+
+type CreatePaymentDto = {
+  amount: number;
+  productId: number;
+  paymentMethodId: number;
+  userId: number;
+};
 
 @Controller('payments')
 export class PaymentsController {
@@ -33,5 +40,13 @@ export class PaymentsController {
   @Put('update-status')
   updatePaymentStatus(updateDto: UpdatePaymentStatusDto) {
     this.paymentsService.updatePaymentStatus(updateDto.id, updateDto.status);
+  }
+
+  addPayment(createPaymentDto: CreatePaymentDto) {
+    const payment: Payment = {
+      ...createPaymentDto,
+      status: 'initialised',
+    };
+    this.paymentsService.addPayment(payment);
   }
 }

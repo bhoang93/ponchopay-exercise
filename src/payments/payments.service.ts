@@ -6,7 +6,7 @@ export class PaymentsService {
   private readonly payments: Payment[] = [];
 
   addPayment(payment: Payment) {
-    this.payments.push(payment);
+    this.payments.push({ ...payment, id: this.payments.length + 1 });
   }
 
   findAll(status?: PaymentStatus): Payment[] {
