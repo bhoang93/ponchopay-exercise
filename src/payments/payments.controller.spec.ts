@@ -1,6 +1,5 @@
 import { GetAllPaymentsQuery, PaymentsController } from './payments.controller';
 import { PaymentsService } from './payments.service';
-import { testPaymentMethod, testProduct, testUser } from '../shared/testModels';
 
 describe('PaymentsController', () => {
   let paymentsController: PaymentsController;
@@ -18,9 +17,9 @@ describe('PaymentsController', () => {
           id: 1,
           amount: 100,
           status: 'initialised' as const,
-          product: testProduct,
-          paymentMethod: testPaymentMethod,
-          user: testUser,
+          productId: 1,
+          paymentMethodId: 1,
+          userId: 1,
         },
       ];
 
@@ -40,9 +39,9 @@ describe('PaymentsController', () => {
         id: 1,
         amount: 100,
         status: 'complete' as const,
-        product: testProduct,
-        paymentMethod: testPaymentMethod,
-        user: testUser,
+        productId: 1,
+        paymentMethodId: 1,
+        userId: 1,
       };
 
       const filteredPayments = [completePayment];

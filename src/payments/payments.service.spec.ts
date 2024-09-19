@@ -1,7 +1,6 @@
 ﻿import { Test, TestingModule } from '@nestjs/testing';
 import { Payment } from '../interfaces/payment.interface';
 import { PaymentsService } from './payments.service';
-import { testPaymentMethod, testProduct, testUser } from '../shared/testModels';
 
 describe('PaymentsService', () => {
   let service: PaymentsService;
@@ -19,9 +18,9 @@ describe('PaymentsService', () => {
       id: 1,
       amount: 100,
       status: 'initialised',
-      product: testProduct,
-      paymentMethod: testPaymentMethod,
-      user: testUser,
+      productId: 1,
+      paymentMethodId: 1,
+      userId: 1,
     };
 
     service.addPayment(newPayment);
@@ -34,18 +33,18 @@ describe('PaymentsService', () => {
       id: 1,
       amount: 100,
       status: 'initialised',
-      product: testProduct,
-      paymentMethod: testPaymentMethod,
-      user: testUser,
+      productId: 1,
+      paymentMethodId: 1,
+      userId: 1,
     };
 
     const completePayment: Payment = {
       id: 2,
       amount: 100,
       status: 'complete',
-      product: testProduct,
-      paymentMethod: testPaymentMethod,
-      user: testUser,
+      productId: 1,
+      paymentMethodId: 1,
+      userId: 1,
     };
 
     service.addPayment(initialisedPayment);
@@ -59,27 +58,27 @@ describe('PaymentsService', () => {
       id: 1,
       amount: 100,
       status: 'initialised',
-      product: testProduct,
-      paymentMethod: testPaymentMethod,
-      user: testUser,
+      productId: 1,
+      paymentMethodId: 1,
+      userId: 1,
     };
 
     const completePayment1: Payment = {
       id: 2,
       amount: 50,
       status: 'complete',
-      product: testProduct,
-      paymentMethod: testPaymentMethod,
-      user: testUser,
+      productId: 1,
+      paymentMethodId: 1,
+      userId: 1,
     };
 
     const completePayment2: Payment = {
       id: 3,
       amount: 200,
       status: 'complete',
-      product: testProduct,
-      paymentMethod: testPaymentMethod,
-      user: testUser,
+      productId: 1,
+      paymentMethodId: 1,
+      userId: 1,
     };
 
     service.addPayment(initialisedPayment);
@@ -96,9 +95,9 @@ describe('PaymentsService', () => {
       id: 1,
       amount: 100,
       status: 'initialised',
-      product: testProduct,
-      paymentMethod: testPaymentMethod,
-      user: testUser,
+      productId: 1,
+      paymentMethodId: 1,
+      userId: 1,
     };
     service.addPayment(payment);
 

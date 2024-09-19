@@ -13,6 +13,7 @@ describe('ProductsController', () => {
   it('should return all products', () => {
     const allProducts = [
       {
+        id: 1,
         name: 'new product',
         description: 'test',
         price: 11.99,

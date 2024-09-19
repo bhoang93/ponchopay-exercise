@@ -14,6 +14,7 @@ describe('ProductsService', () => {
 
   it('adds and retrieves products to the store', () => {
     const newProduct = {
+      id: 1,
       name: 'new product',
       description: 'new description',
       price: 11.99,
