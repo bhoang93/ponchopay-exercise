@@ -4,8 +4,8 @@ import { User } from './user.interface';
 
 export type PaymentStatus =
   | 'initialised'
-  | 'user set'
-  | 'payment taken'
+  | 'user-set'
+  | 'payment-taken'
   | 'complete';
 
 export interface Payment {
