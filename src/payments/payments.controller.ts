@@ -2,9 +2,9 @@
 import { PaymentsService } from './payments.service';
 import { PaymentStatus } from '../interfaces/payment.interface';
 
-export class GetAllPaymentsQuery {
+export type GetAllPaymentsQuery = {
   status?: PaymentStatus;
-}
+};
 
 type UpdatePaymentStatusDto = { id: number; status: PaymentStatus };
 
