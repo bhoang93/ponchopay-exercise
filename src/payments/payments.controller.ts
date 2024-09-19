@@ -1,13 +1,17 @@
-﻿import { Controller, Get } from '@nestjs/common';
+﻿import { Controller, Get, Query } from '@nestjs/common';
 import { PaymentsService } from './payments.service';
-import { Payment } from '../interfaces/payment.interface';
+import { Payment, PaymentStatus } from '../interfaces/payment.interface';
+
+export class GetAllPaymentsQuery {
+  status?: PaymentStatus;
+}
 
 @Controller('payments')
 export class PaymentsController {
   constructor(private readonly paymentsService: PaymentsService) {}
 
   @Get()
-  getAllPayments(): Payment[] {
-    return this.paymentsService.findAll();
+  getAllPayments(@Query() query: GetAllPaymentsQuery): Payment[] {
+    return this.paymentsService.findAll(query?.status);
   }
 }
